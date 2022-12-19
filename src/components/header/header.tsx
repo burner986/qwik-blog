@@ -1,9 +1,23 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useClientEffect$, useStore } from "@builder.io/qwik";
 
 export default component$(() => {
+  const store = useStore({
+    bg: "bg-transparent",
+  });
+  useClientEffect$(() => {
+    // Only runs in the client
+    window.onscroll = function () {
+      if (window.pageYOffset === 0) {
+        store.bg = "bg-transparent";
+      } else {
+        store.bg = "bg-base-100";
+      }
+    };
+  });
+
   return (
     <header>
-      <div class="navbar bg-base-100">
+      <div class={`navbar fixed top-0 ${store.bg} z-10 transition duration-300`}>
         <div class="navbar-start">
           <div class="dropdown">
             <label tabIndex={0} class="btn btn-ghost lg:hidden">
