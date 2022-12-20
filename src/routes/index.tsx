@@ -12,11 +12,9 @@ export default component$(() => {
         <div class="hero-overlay bg-opacity-60"></div>
         <div class="max-w-3xl p-5 text-neutral-content pt-32 pb-32">
           <div>
-            <h1 class="mb-5 text-6xl lg:text-7xl font-bold">Hello there</h1>
+            <h1 class="mb-5 text-6xl lg:text-7xl font-bold">BurnersBlog</h1>
             <p class="mb-5 text-3xl font-light">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+
             </p>
           </div>
         </div>
