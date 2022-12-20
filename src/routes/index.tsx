@@ -6,13 +6,13 @@ export default component$(() => {
   return (
     <>
       <div
-        class="hero h-[65vh]"
+        class="hero min-h-[65vh]"
         style="background-image: url(https://placeimg.com/1000/800/arch);"
       >
         <div class="hero-overlay bg-opacity-60"></div>
-        <div class="hero-content text-center text-neutral-content">
-          <div class="max-w-md">
-            <h1 class="mb-5 text-7xl font-bold">Hello there</h1>
+        <div class="max-w-3xl p-5 text-neutral-content pt-32 pb-32">
+          <div>
+            <h1 class="mb-5 text-6xl lg:text-7xl font-bold">Hello there</h1>
             <p class="mb-5">
               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
@@ -23,7 +23,7 @@ export default component$(() => {
         </div>
       </div>
       <div class="flex justify-center">
-        <div class="flex flex-col w-full max-w-3xl border-opacity-50 p-3 pt-16 pb-16">
+        <div class="flex flex-col w-full max-w-3xl p-5 border-opacity-50 pt-16 pb-16">
           <div class="">
             <a href="">
               <h2 class="post-title text-5xl pb-3 font-bold">
