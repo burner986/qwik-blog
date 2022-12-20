@@ -6,7 +6,6 @@ import {
   ChevronRightIcon,
 } from "../icons/heroicons";
 
-// Lite component: declared using a standard function.
 export const MyNavItems = ({ Icon }: { Icon?: FunctionComponent }) => {
   return (
     <>
