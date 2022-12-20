@@ -1,4 +1,5 @@
 import { component$ } from "@builder.io/qwik";
+import { $translate as t, formatDate as fd } from "qwik-speak";
 
 export const BlogListItem = component$(
   ({
@@ -12,7 +13,7 @@ export const BlogListItem = component$(
     subtitle: string;
     tags: string[];
     username: string;
-    date: Date;
+    date: string;
   }) => {
     return (
       <div>
@@ -21,20 +22,15 @@ export const BlogListItem = component$(
           <h3 class="post-subtitle text-3xl pb-3 font-thin">{subtitle}</h3>
         </a>
         <p class="post-meta italic text-gray-500">
-          Posted by
+          {t("home.postedBy@@Posted by")}
           <a
             href="#!"
             class="underline hover:text-primary transition pl-1 pr-1"
           >
             {username}
           </a>
-          on{" "}
-          {date.toLocaleString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-          {" "}in
+          {t("home.on@@on")} {fd(new Date(date), { dateStyle: "long" })}{" "}
+          {t("home.in@@in")}
           {tags.map((tag, index) => (
             <>
               <a href="#!" class="underline hover:text-primary transition pl-1">

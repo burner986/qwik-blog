@@ -1,10 +1,11 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { HeroTitle } from "~/components/title/HeroTitle";
+import { Speak } from "qwik-speak";
 
 export default component$(() => {
   return (
-    <>
+    <Speak assets={["entry"]}>
       <HeroTitle
         title="Logbuch Eintrag Nummer XXX."
         subtitle="Sieht aus als wäre hier noch nichts passiert."
@@ -26,16 +27,16 @@ export default component$(() => {
           </p>
         </div>
       </div>
-    </>
+    </Speak>
   );
 });
 
 export const head: DocumentHead = {
-  title: "Burners Entry XXX",
+  title: "entry.head.title@@Entry",
   meta: [
     {
       name: "description",
-      content: "Burnersblog site description",
+      content: "entry.head.description@@Entry page description",
     },
   ],
 };

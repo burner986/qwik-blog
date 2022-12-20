@@ -1,37 +1,8 @@
 import { component$, useClientEffect$, useStore } from "@builder.io/qwik";
-import { FunctionComponent } from "@builder.io/qwik/jsx-runtime";
 import {
   Bars3CenterLeftIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
 } from "../icons/heroicons";
-
-export const MyNavItems = ({ Icon }: { Icon?: FunctionComponent }) => {
-  return (
-    <>
-      <li>
-        <a>Karte</a>
-      </li>
-      <li tabIndex={0}>
-        <a class="justify-between">
-          Blog
-          {Icon && <Icon />}
-        </a>
-        <ul class="p-2 bg-base-100">
-          <li>
-            <a>Submenu 1</a>
-          </li>
-          <li>
-            <a>Submenu 2</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a>Über mich</a>
-      </li>
-    </>
-  );
-};
+import MyNavItems from "./nav-items";
 
 export default component$(() => {
   const store = useStore({
@@ -62,7 +33,7 @@ export default component$(() => {
               tabIndex={0}
               class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <MyNavItems Icon={ChevronRightIcon} />
+              <MyNavItems chevronRight />
             </ul>
           </div>
           <a class="btn btn-ghost normal-case text-xl hidden lg:flex">
@@ -76,7 +47,7 @@ export default component$(() => {
         </div>
         <div class="navbar-end">
           <ul class="menu menu-horizontal px-1 hidden lg:flex">
-            <MyNavItems Icon={ChevronDownIcon} />
+            <MyNavItems />
           </ul>
         </div>
       </div>

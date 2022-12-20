@@ -1,0 +1,11 @@
+{
+    "home": {
+        "in": "in",
+        "on": "on",
+        "postedBy": "Posted by",
+        "head": {
+            "title": "Welcome to BurnersBlog",
+            "description": "Welcome page description"
+        }
+    }
+}
