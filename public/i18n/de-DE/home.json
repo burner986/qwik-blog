@@ -2,10 +2,6 @@
     "home": {
         "in": "in",
         "on": "am",
-        "postedBy": "Verfasst von",
-        "head": {
-            "title": "Willkommen auf BurnersBlog",
-            "description": "Willkommen page description"
-        }
+        "postedBy": "Verfasst von"
     }
 }

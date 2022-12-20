@@ -35,11 +35,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "home.head.title@@Welcome to BurnersBlog.",
+  title: "runtime.home.head.title@@Welcome to BurnersBlog.",
   meta: [
     {
       name: "description",
-      content: "home.head.description@@Burnersblog site description",
+      content: "runtime.home.head.description@@Burnersblog site description",
     },
   ],
 };

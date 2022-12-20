@@ -32,11 +32,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "entry.head.title@@Entry",
+  title: "runtime.entry.head.title@@Entry",
   meta: [
     {
       name: "description",
-      content: "entry.head.description@@Entry page description",
+      content: "runtime.entry.head.description@@Entry page description",
     },
   ],
 };
