@@ -6,29 +6,47 @@ import {
 } from "~/components/bloglistitem/BlogListItem";
 import { HeroTitle } from "~/components/title/HeroTitle";
 import { $translate as t, Speak } from "qwik-speak";
-
+import { prisma } from "~/prisma";
 import type { RequestHandler } from "@builder.io/qwik-city";
 
 export const onGet: RequestHandler<EntryListItem[]> = async () => {
+  const entries = await prisma.posts.findMany({
+    select: {
+      id: true,
+      title: true,
+      subtitle: true,
+      slug: true,
+      created_at: true,
+    },
+  });
+  return entries.map((entry) => ({
+    slug: entry.slug!,
+    title: entry.title!,
+    subtitle: entry.subtitle!,
+    username: "burner",
+    tags: ["hi", "hello"],
+    date: entry.created_at!.toString(),
+  }));
+
   // put your DB access here, we are hard coding a response for simplicity.
-  return [
-    {
-      slug: "hello-world",
-      title: "Man must explore, and this is exploration at its greatest",
-      subtitle: "Problems look mighty small from 150 miles up",
-      username: "burner",
-      tags: ["hi", "hello"],
-      date: new Date().toString(),
-    },
-    {
-      slug: "hello-world",
-      title: "Man must explore, and this is exploration at its greatest",
-      subtitle: "Problems look mighty small from 150 miles up",
-      username: "burner",
-      tags: ["hi", "hello"],
-      date: new Date().toString(),
-    },
-  ];
+  // return [
+  //   {
+  //     slug: "hello-world",
+  //     title: "Man must explore, and this is exploration at its greatest",
+  //     subtitle: "Problems look mighty small from 150 miles up",
+  //     username: "burner",
+  //     tags: ["hi", "hello"],
+  //     date: new Date().toString(),
+  //   },
+  //   {
+  //     slug: "hello-world",
+  //     title: "Man must explore, and this is exploration at its greatest",
+  //     subtitle: "Problems look mighty small from 150 miles up",
+  //     username: "burner",
+  //     tags: ["hi", "hello"],
+  //     date: new Date().toString(),
+  //   },
+  // ];
 };
 
 export default component$(() => {

@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model posts {
+  id               BigInt    @id @default(autoincrement())
+  created_at       DateTime? @default(now()) @db.Timestamptz(6)
+  slug             String?   @db.VarChar
+  title            String?   @db.VarChar
+  subtitle         String?   @db.VarChar
+  content_raw      String?   @db.VarChar
+  content_html     String?   @db.VarChar
+  title_en         String?   @db.VarChar
+  subtitle_en      String?   @db.VarChar
+  content_raw_en   String?   @db.VarChar
+  content_html_en  String?   @db.VarChar
+  page_image       String?   @db.VarChar
+  meta_description String?   @db.VarChar
+  is_draft         Boolean?
+  layout           String?   @db.VarChar
+  published_at     DateTime? @db.Timestamp(6)
+  place            String?   @db.VarChar
+  longitude        String?   @db.VarChar
+  latitude         String?   @db.VarChar
+  updated_at       DateTime? @db.Timestamptz(6)
+}
