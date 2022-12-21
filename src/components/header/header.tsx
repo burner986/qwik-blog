@@ -1,7 +1,6 @@
 import { component$, useClientEffect$, useStore } from "@builder.io/qwik";
-import {
-  Bars3CenterLeftIcon,
-} from "../icons/heroicons";
+import { Link } from "@builder.io/qwik-city";
+import { Bars3CenterLeftIcon } from "../icons/heroicons";
 import MyNavItems from "./nav-items";
 
 export default component$(() => {
@@ -36,14 +35,17 @@ export default component$(() => {
               <MyNavItems chevronRight />
             </ul>
           </div>
-          <a class="btn btn-ghost normal-case text-xl hidden lg:flex">
+          <Link
+            href="/"
+            class="btn btn-ghost normal-case text-xl hidden lg:flex"
+          >
             BurnersBlog.
-          </a>
+          </Link>
         </div>
         <div class="navbar-center">
-          <a class="btn btn-ghost normal-case text-xl lg:hidden">
+          <Link href="/" class="btn btn-ghost normal-case text-xl lg:hidden">
             BurnersBlog.
-          </a>
+          </Link>
         </div>
         <div class="navbar-end">
           <ul class="menu menu-horizontal px-1 hidden lg:flex">

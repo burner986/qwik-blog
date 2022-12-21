@@ -1,10 +1,39 @@
-import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
-import { BlogListItem } from "~/components/bloglistitem/BlogListItem";
+import { component$, Resource } from "@builder.io/qwik";
+import { DocumentHead, useEndpoint } from "@builder.io/qwik-city";
+import {
+  BlogListItem,
+  EntryListItem,
+} from "~/components/bloglistitem/BlogListItem";
 import { HeroTitle } from "~/components/title/HeroTitle";
 import { $translate as t, Speak } from "qwik-speak";
 
+import type { RequestHandler } from "@builder.io/qwik-city";
+
+export const onGet: RequestHandler<EntryListItem[]> = async () => {
+  // put your DB access here, we are hard coding a response for simplicity.
+  return [
+    {
+      slug: "hello-world",
+      title: "Man must explore, and this is exploration at its greatest",
+      subtitle: "Problems look mighty small from 150 miles up",
+      username: "burner",
+      tags: ["hi", "hello"],
+      date: new Date().toString(),
+    },
+    {
+      slug: "hello-world",
+      title: "Man must explore, and this is exploration at its greatest",
+      subtitle: "Problems look mighty small from 150 miles up",
+      username: "burner",
+      tags: ["hi", "hello"],
+      date: new Date().toString(),
+    },
+  ];
+};
+
 export default component$(() => {
+  const listItems = useEndpoint<EntryListItem[]>();
+
   return (
     <Speak assets={["home"]}>
       <HeroTitle
@@ -13,20 +42,22 @@ export default component$(() => {
       />
       <div class="flex justify-center">
         <div class="flex flex-col w-full max-w-3xl p-5 border-opacity-50 pt-16 pb-16">
-          <BlogListItem
-            title="Man must explore, and this is exploration at its greatest"
-            subtitle="Problems look mighty small from 150 miles up"
-            username="burner"
-            tags={["hi", "hello"]}
-            date={new Date().toString()}
-          />
-          <div class="divider"></div>
-          <BlogListItem
-            title="Man must explore, and this is exploration at its greatest"
-            subtitle="Problems look mighty small from 150 miles up"
-            username="burner"
-            tags={["hi", "hello"]}
-            date={new Date().toString()}
+          <Resource
+            value={listItems}
+            onPending={() => <div>Loading...</div>}
+            onRejected={() => <div>Error</div>}
+            onResolved={(listItems) => (
+              <>
+                {listItems?.map((item, index) => (
+                  <>
+                    <BlogListItem {...item} />
+                    {index < listItems.length - 1 && (
+                      <div class="divider"></div>
+                    )}
+                  </>
+                ))}
+              </>
+            )}
           />
         </div>
       </div>

@@ -1,26 +1,24 @@
 import { component$ } from "@builder.io/qwik";
+import { Link } from "@builder.io/qwik-city";
 import { $translate as t, formatDate as fd } from "qwik-speak";
 
+export type EntryListItem = {
+  slug: string;
+  title: string;
+  subtitle: string;
+  tags: string[];
+  username: string;
+  date: string;
+};
+
 export const BlogListItem = component$(
-  ({
-    title,
-    subtitle,
-    tags,
-    username,
-    date,
-  }: {
-    title: string;
-    subtitle: string;
-    tags: string[];
-    username: string;
-    date: string;
-  }) => {
+  ({ slug, title, subtitle, tags, username, date }: EntryListItem) => {
     return (
       <div>
-        <a class="hover:text-primary transition" href="">
+        <Link class="hover:text-primary transition" href={`/entry/${slug}`}>
           <h2 class="post-title text-5xl pb-3 font-bold">{title}</h2>
           <h3 class="post-subtitle text-3xl pb-3 font-thin">{subtitle}</h3>
-        </a>
+        </Link>
         <p class="post-meta italic text-gray-500">
           {t("home.postedBy@@Posted by")}
           <a
