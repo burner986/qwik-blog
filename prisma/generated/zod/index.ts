@@ -31,7 +31,7 @@ export const UserScalarFieldEnumSchema = z.nativeEnum(PrismaClient.Prisma.UserSc
 //------------------------------------------------------
 
 export const PostSchema = z.object({
-  id: z.bigint(),
+  id: z.number().int(),
   slug: z.string(),
   title: z.string(),
   subtitle: z.string(),
@@ -51,14 +51,14 @@ export const PostSchema = z.object({
   latitude: z.string(),
   created_at: z.date(),
   updated_at: z.date(),
-  authorId: z.bigint(),
+  authorId: z.number().int(),
 });
 
 // TAG
 //------------------------------------------------------
 
 export const TagSchema = z.object({
-  id: z.bigint(),
+  id: z.number().int(),
   tag: z.string(),
   title: z.string(),
   title_en: z.string(),
@@ -76,7 +76,7 @@ export const TagSchema = z.object({
 //------------------------------------------------------
 
 export const UserSchema = z.object({
-  id: z.bigint(),
+  id: z.number().int(),
   name: z.string(),
   email: z.string(),
   password: z.string(),
@@ -89,8 +89,8 @@ export const UserSchema = z.object({
 //------------------------------------------------------
 
 export const Post_TagSchema = z.object({
-  post_id: z.bigint(),
-  tag_id: z.bigint(),
+  post_id: z.number().int(),
+  tag_id: z.number().int(),
   created_at: z.date(),
   updated_at: z.date(),
 });
@@ -249,7 +249,7 @@ export const PostWhereInputSchema: z.ZodType<PrismaClient.Prisma.PostWhereInput>
   AND: z.union([z.lazy(() => PostWhereInputSchema), z.lazy(() => PostWhereInputSchema).array()]).optional(),
   OR: z.lazy(() => PostWhereInputSchema).array().optional(),
   NOT: z.union([z.lazy(() => PostWhereInputSchema), z.lazy(() => PostWhereInputSchema).array()]).optional(),
-  id: z.union([z.lazy(() => BigIntFilterSchema), z.bigint()]).optional(),
+  id: z.union([z.lazy(() => IntFilterSchema), z.number()]).optional(),
   slug: z.union([z.lazy(() => StringFilterSchema), z.string()]).optional(),
   title: z.union([z.lazy(() => StringFilterSchema), z.string()]).optional(),
   subtitle: z.union([z.lazy(() => StringFilterSchema), z.string()]).optional(),
@@ -271,7 +271,7 @@ export const PostWhereInputSchema: z.ZodType<PrismaClient.Prisma.PostWhereInput>
   created_at: z.union([z.lazy(() => DateTimeFilterSchema), z.date()]).optional(),
   updated_at: z.union([z.lazy(() => DateTimeFilterSchema), z.date()]).optional(),
   posts_tags: z.lazy(() => Post_TagListRelationFilterSchema).optional(),
-  authorId: z.union([z.lazy(() => BigIntFilterSchema), z.bigint()]).optional(),
+  authorId: z.union([z.lazy(() => IntFilterSchema), z.number()]).optional(),
 }).strict();
 
 export const PostOrderByWithRelationInputSchema: z.ZodType<PrismaClient.Prisma.PostOrderByWithRelationInput> = z.object({
@@ -301,7 +301,7 @@ export const PostOrderByWithRelationInputSchema: z.ZodType<PrismaClient.Prisma.P
 }).strict();
 
 export const PostWhereUniqueInputSchema: z.ZodType<PrismaClient.Prisma.PostWhereUniqueInput> = z.object({
-  id: z.bigint().optional(),
+  id: z.number().int().optional(),
 }).strict();
 
 export const PostOrderByWithAggregationInputSchema: z.ZodType<PrismaClient.Prisma.PostOrderByWithAggregationInput> = z.object({
@@ -337,7 +337,7 @@ export const PostScalarWhereWithAggregatesInputSchema: z.ZodType<PrismaClient.Pr
   AND: z.union([z.lazy(() => PostScalarWhereWithAggregatesInputSchema), z.lazy(() => PostScalarWhereWithAggregatesInputSchema).array()]).optional(),
   OR: z.lazy(() => PostScalarWhereWithAggregatesInputSchema).array().optional(),
   NOT: z.union([z.lazy(() => PostScalarWhereWithAggregatesInputSchema), z.lazy(() => PostScalarWhereWithAggregatesInputSchema).array()]).optional(),
-  id: z.union([z.lazy(() => BigIntWithAggregatesFilterSchema), z.bigint()]).optional(),
+  id: z.union([z.lazy(() => IntWithAggregatesFilterSchema), z.number()]).optional(),
   slug: z.union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()]).optional(),
   title: z.union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()]).optional(),
   subtitle: z.union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()]).optional(),
@@ -357,14 +357,14 @@ export const PostScalarWhereWithAggregatesInputSchema: z.ZodType<PrismaClient.Pr
   latitude: z.union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()]).optional(),
   created_at: z.union([z.lazy(() => DateTimeWithAggregatesFilterSchema), z.date()]).optional(),
   updated_at: z.union([z.lazy(() => DateTimeWithAggregatesFilterSchema), z.date()]).optional(),
-  authorId: z.union([z.lazy(() => BigIntWithAggregatesFilterSchema), z.bigint()]).optional(),
+  authorId: z.union([z.lazy(() => IntWithAggregatesFilterSchema), z.number()]).optional(),
 }).strict();
 
 export const TagWhereInputSchema: z.ZodType<PrismaClient.Prisma.TagWhereInput> = z.object({
   AND: z.union([z.lazy(() => TagWhereInputSchema), z.lazy(() => TagWhereInputSchema).array()]).optional(),
   OR: z.lazy(() => TagWhereInputSchema).array().optional(),
   NOT: z.union([z.lazy(() => TagWhereInputSchema), z.lazy(() => TagWhereInputSchema).array()]).optional(),
-  id: z.union([z.lazy(() => BigIntFilterSchema), z.bigint()]).optional(),
+  id: z.union([z.lazy(() => IntFilterSchema), z.number()]).optional(),
   tag: z.union([z.lazy(() => StringFilterSchema), z.string()]).optional(),
   title: z.union([z.lazy(() => StringFilterSchema), z.string()]).optional(),
   title_en: z.union([z.lazy(() => StringFilterSchema), z.string()]).optional(),
@@ -396,7 +396,7 @@ export const TagOrderByWithRelationInputSchema: z.ZodType<PrismaClient.Prisma.Ta
 }).strict();
 
 export const TagWhereUniqueInputSchema: z.ZodType<PrismaClient.Prisma.TagWhereUniqueInput> = z.object({
-  id: z.bigint().optional(),
+  id: z.number().int().optional(),
 }).strict();
 
 export const TagOrderByWithAggregationInputSchema: z.ZodType<PrismaClient.Prisma.TagOrderByWithAggregationInput> = z.object({
@@ -423,7 +423,7 @@ export const TagScalarWhereWithAggregatesInputSchema: z.ZodType<PrismaClient.Pri
   AND: z.union([z.lazy(() => TagScalarWhereWithAggregatesInputSchema), z.lazy(() => TagScalarWhereWithAggregatesInputSchema).array()]).optional(),
   OR: z.lazy(() => TagScalarWhereWithAggregatesInputSchema).array().optional(),
   NOT: z.union([z.lazy(() => TagScalarWhereWithAggregatesInputSchema), z.lazy(() => TagScalarWhereWithAggregatesInputSchema).array()]).optional(),
-  id: z.union([z.lazy(() => BigIntWithAggregatesFilterSchema), z.bigint()]).optional(),
+  id: z.union([z.lazy(() => IntWithAggregatesFilterSchema), z.number()]).optional(),
   tag: z.union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()]).optional(),
   title: z.union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()]).optional(),
   title_en: z.union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()]).optional(),
@@ -441,7 +441,7 @@ export const UserWhereInputSchema: z.ZodType<PrismaClient.Prisma.UserWhereInput>
   AND: z.union([z.lazy(() => UserWhereInputSchema), z.lazy(() => UserWhereInputSchema).array()]).optional(),
   OR: z.lazy(() => UserWhereInputSchema).array().optional(),
   NOT: z.union([z.lazy(() => UserWhereInputSchema), z.lazy(() => UserWhereInputSchema).array()]).optional(),
-  id: z.union([z.lazy(() => BigIntFilterSchema), z.bigint()]).optional(),
+  id: z.union([z.lazy(() => IntFilterSchema), z.number()]).optional(),
   name: z.union([z.lazy(() => StringFilterSchema), z.string()]).optional(),
   email: z.union([z.lazy(() => StringFilterSchema), z.string()]).optional(),
   password: z.union([z.lazy(() => StringFilterSchema), z.string()]).optional(),
@@ -463,7 +463,7 @@ export const UserOrderByWithRelationInputSchema: z.ZodType<PrismaClient.Prisma.U
 }).strict();
 
 export const UserWhereUniqueInputSchema: z.ZodType<PrismaClient.Prisma.UserWhereUniqueInput> = z.object({
-  id: z.bigint().optional(),
+  id: z.number().int().optional(),
 }).strict();
 
 export const UserOrderByWithAggregationInputSchema: z.ZodType<PrismaClient.Prisma.UserOrderByWithAggregationInput> = z.object({
@@ -485,7 +485,7 @@ export const UserScalarWhereWithAggregatesInputSchema: z.ZodType<PrismaClient.Pr
   AND: z.union([z.lazy(() => UserScalarWhereWithAggregatesInputSchema), z.lazy(() => UserScalarWhereWithAggregatesInputSchema).array()]).optional(),
   OR: z.lazy(() => UserScalarWhereWithAggregatesInputSchema).array().optional(),
   NOT: z.union([z.lazy(() => UserScalarWhereWithAggregatesInputSchema), z.lazy(() => UserScalarWhereWithAggregatesInputSchema).array()]).optional(),
-  id: z.union([z.lazy(() => BigIntWithAggregatesFilterSchema), z.bigint()]).optional(),
+  id: z.union([z.lazy(() => IntWithAggregatesFilterSchema), z.number()]).optional(),
   name: z.union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()]).optional(),
   email: z.union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()]).optional(),
   password: z.union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()]).optional(),
@@ -500,8 +500,8 @@ export const Post_TagWhereInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagWhe
   NOT: z.union([z.lazy(() => Post_TagWhereInputSchema), z.lazy(() => Post_TagWhereInputSchema).array()]).optional(),
   post: z.union([z.lazy(() => PostRelationFilterSchema), z.lazy(() => PostWhereInputSchema)]).optional(),
   tag: z.union([z.lazy(() => TagRelationFilterSchema), z.lazy(() => TagWhereInputSchema)]).optional(),
-  post_id: z.union([z.lazy(() => BigIntFilterSchema), z.bigint()]).optional(),
-  tag_id: z.union([z.lazy(() => BigIntFilterSchema), z.bigint()]).optional(),
+  post_id: z.union([z.lazy(() => IntFilterSchema), z.number()]).optional(),
+  tag_id: z.union([z.lazy(() => IntFilterSchema), z.number()]).optional(),
   created_at: z.union([z.lazy(() => DateTimeFilterSchema), z.date()]).optional(),
   updated_at: z.union([z.lazy(() => DateTimeFilterSchema), z.date()]).optional(),
 }).strict();
@@ -535,14 +535,13 @@ export const Post_TagScalarWhereWithAggregatesInputSchema: z.ZodType<PrismaClien
   AND: z.union([z.lazy(() => Post_TagScalarWhereWithAggregatesInputSchema), z.lazy(() => Post_TagScalarWhereWithAggregatesInputSchema).array()]).optional(),
   OR: z.lazy(() => Post_TagScalarWhereWithAggregatesInputSchema).array().optional(),
   NOT: z.union([z.lazy(() => Post_TagScalarWhereWithAggregatesInputSchema), z.lazy(() => Post_TagScalarWhereWithAggregatesInputSchema).array()]).optional(),
-  post_id: z.union([z.lazy(() => BigIntWithAggregatesFilterSchema), z.bigint()]).optional(),
-  tag_id: z.union([z.lazy(() => BigIntWithAggregatesFilterSchema), z.bigint()]).optional(),
+  post_id: z.union([z.lazy(() => IntWithAggregatesFilterSchema), z.number()]).optional(),
+  tag_id: z.union([z.lazy(() => IntWithAggregatesFilterSchema), z.number()]).optional(),
   created_at: z.union([z.lazy(() => DateTimeWithAggregatesFilterSchema), z.date()]).optional(),
   updated_at: z.union([z.lazy(() => DateTimeWithAggregatesFilterSchema), z.date()]).optional(),
 }).strict();
 
 export const PostCreateInputSchema: z.ZodType<PrismaClient.Prisma.PostCreateInput> = z.object({
-  id: z.bigint().optional(),
   slug: z.string(),
   title: z.string(),
   subtitle: z.string(),
@@ -567,7 +566,7 @@ export const PostCreateInputSchema: z.ZodType<PrismaClient.Prisma.PostCreateInpu
 }).strict();
 
 export const PostUncheckedCreateInputSchema: z.ZodType<PrismaClient.Prisma.PostUncheckedCreateInput> = z.object({
-  id: z.bigint().optional(),
+  id: z.number().int().optional(),
   slug: z.string(),
   title: z.string(),
   subtitle: z.string(),
@@ -588,11 +587,10 @@ export const PostUncheckedCreateInputSchema: z.ZodType<PrismaClient.Prisma.PostU
   created_at: z.date().optional(),
   updated_at: z.date().optional(),
   posts_tags: z.lazy(() => Post_TagUncheckedCreateNestedManyWithoutPostInputSchema).optional(),
-  authorId: z.bigint(),
+  authorId: z.number().int(),
 }).strict();
 
 export const PostUpdateInputSchema: z.ZodType<PrismaClient.Prisma.PostUpdateInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
   slug: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   subtitle: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -617,7 +615,7 @@ export const PostUpdateInputSchema: z.ZodType<PrismaClient.Prisma.PostUpdateInpu
 }).strict();
 
 export const PostUncheckedUpdateInputSchema: z.ZodType<PrismaClient.Prisma.PostUncheckedUpdateInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
   slug: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   subtitle: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -638,11 +636,10 @@ export const PostUncheckedUpdateInputSchema: z.ZodType<PrismaClient.Prisma.PostU
   created_at: z.union([z.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputSchema)]).optional(),
   updated_at: z.union([z.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputSchema)]).optional(),
   posts_tags: z.lazy(() => Post_TagUncheckedUpdateManyWithoutPostNestedInputSchema).optional(),
-  authorId: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  authorId: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
 }).strict();
 
 export const PostUpdateManyMutationInputSchema: z.ZodType<PrismaClient.Prisma.PostUpdateManyMutationInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
   slug: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   subtitle: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -665,7 +662,7 @@ export const PostUpdateManyMutationInputSchema: z.ZodType<PrismaClient.Prisma.Po
 }).strict();
 
 export const PostUncheckedUpdateManyInputSchema: z.ZodType<PrismaClient.Prisma.PostUncheckedUpdateManyInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
   slug: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   subtitle: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -685,11 +682,10 @@ export const PostUncheckedUpdateManyInputSchema: z.ZodType<PrismaClient.Prisma.P
   latitude: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   created_at: z.union([z.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputSchema)]).optional(),
   updated_at: z.union([z.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputSchema)]).optional(),
-  authorId: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  authorId: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
 }).strict();
 
 export const TagCreateInputSchema: z.ZodType<PrismaClient.Prisma.TagCreateInput> = z.object({
-  id: z.bigint().optional(),
   tag: z.string(),
   title: z.string(),
   title_en: z.string(),
@@ -705,7 +701,7 @@ export const TagCreateInputSchema: z.ZodType<PrismaClient.Prisma.TagCreateInput>
 }).strict();
 
 export const TagUncheckedCreateInputSchema: z.ZodType<PrismaClient.Prisma.TagUncheckedCreateInput> = z.object({
-  id: z.bigint().optional(),
+  id: z.number().int().optional(),
   tag: z.string(),
   title: z.string(),
   title_en: z.string(),
@@ -721,7 +717,6 @@ export const TagUncheckedCreateInputSchema: z.ZodType<PrismaClient.Prisma.TagUnc
 }).strict();
 
 export const TagUpdateInputSchema: z.ZodType<PrismaClient.Prisma.TagUpdateInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
   tag: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title_en: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -737,7 +732,7 @@ export const TagUpdateInputSchema: z.ZodType<PrismaClient.Prisma.TagUpdateInput>
 }).strict();
 
 export const TagUncheckedUpdateInputSchema: z.ZodType<PrismaClient.Prisma.TagUncheckedUpdateInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
   tag: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title_en: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -753,7 +748,6 @@ export const TagUncheckedUpdateInputSchema: z.ZodType<PrismaClient.Prisma.TagUnc
 }).strict();
 
 export const TagUpdateManyMutationInputSchema: z.ZodType<PrismaClient.Prisma.TagUpdateManyMutationInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
   tag: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title_en: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -768,7 +762,7 @@ export const TagUpdateManyMutationInputSchema: z.ZodType<PrismaClient.Prisma.Tag
 }).strict();
 
 export const TagUncheckedUpdateManyInputSchema: z.ZodType<PrismaClient.Prisma.TagUncheckedUpdateManyInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
   tag: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title_en: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -783,7 +777,6 @@ export const TagUncheckedUpdateManyInputSchema: z.ZodType<PrismaClient.Prisma.Ta
 }).strict();
 
 export const UserCreateInputSchema: z.ZodType<PrismaClient.Prisma.UserCreateInput> = z.object({
-  id: z.bigint().optional(),
   name: z.string(),
   email: z.string(),
   password: z.string(),
@@ -794,7 +787,7 @@ export const UserCreateInputSchema: z.ZodType<PrismaClient.Prisma.UserCreateInpu
 }).strict();
 
 export const UserUncheckedCreateInputSchema: z.ZodType<PrismaClient.Prisma.UserUncheckedCreateInput> = z.object({
-  id: z.bigint().optional(),
+  id: z.number().int().optional(),
   name: z.string(),
   email: z.string(),
   password: z.string(),
@@ -805,7 +798,6 @@ export const UserUncheckedCreateInputSchema: z.ZodType<PrismaClient.Prisma.UserU
 }).strict();
 
 export const UserUpdateInputSchema: z.ZodType<PrismaClient.Prisma.UserUpdateInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
   name: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   email: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   password: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -816,7 +808,7 @@ export const UserUpdateInputSchema: z.ZodType<PrismaClient.Prisma.UserUpdateInpu
 }).strict();
 
 export const UserUncheckedUpdateInputSchema: z.ZodType<PrismaClient.Prisma.UserUncheckedUpdateInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
   name: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   email: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   password: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -827,7 +819,6 @@ export const UserUncheckedUpdateInputSchema: z.ZodType<PrismaClient.Prisma.UserU
 }).strict();
 
 export const UserUpdateManyMutationInputSchema: z.ZodType<PrismaClient.Prisma.UserUpdateManyMutationInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
   name: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   email: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   password: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -837,7 +828,7 @@ export const UserUpdateManyMutationInputSchema: z.ZodType<PrismaClient.Prisma.Us
 }).strict();
 
 export const UserUncheckedUpdateManyInputSchema: z.ZodType<PrismaClient.Prisma.UserUncheckedUpdateManyInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
   name: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   email: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   password: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -854,8 +845,8 @@ export const Post_TagCreateInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagCr
 }).strict();
 
 export const Post_TagUncheckedCreateInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagUncheckedCreateInput> = z.object({
-  post_id: z.bigint(),
-  tag_id: z.bigint(),
+  post_id: z.number(),
+  tag_id: z.number(),
   created_at: z.date().optional(),
   updated_at: z.date().optional(),
 }).strict();
@@ -868,8 +859,8 @@ export const Post_TagUpdateInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagUp
 }).strict();
 
 export const Post_TagUncheckedUpdateInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagUncheckedUpdateInput> = z.object({
-  post_id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
-  tag_id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  post_id: z.union([z.number(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
+  tag_id: z.union([z.number(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
   created_at: z.union([z.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputSchema)]).optional(),
   updated_at: z.union([z.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputSchema)]).optional(),
 }).strict();
@@ -880,21 +871,21 @@ export const Post_TagUpdateManyMutationInputSchema: z.ZodType<PrismaClient.Prism
 }).strict();
 
 export const Post_TagUncheckedUpdateManyInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagUncheckedUpdateManyInput> = z.object({
-  post_id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
-  tag_id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  post_id: z.union([z.number(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
+  tag_id: z.union([z.number(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
   created_at: z.union([z.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputSchema)]).optional(),
   updated_at: z.union([z.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputSchema)]).optional(),
 }).strict();
 
-export const BigIntFilterSchema: z.ZodType<PrismaClient.Prisma.BigIntFilter> = z.object({
-  equals: z.bigint().optional(),
-  in: z.bigint().array().optional(),
-  notIn: z.bigint().array().optional(),
-  lt: z.bigint().optional(),
-  lte: z.bigint().optional(),
-  gt: z.bigint().optional(),
-  gte: z.bigint().optional(),
-  not: z.union([z.bigint(), z.lazy(() => NestedBigIntFilterSchema)]).optional(),
+export const IntFilterSchema: z.ZodType<PrismaClient.Prisma.IntFilter> = z.object({
+  equals: z.number().optional(),
+  in: z.number().array().optional(),
+  notIn: z.number().array().optional(),
+  lt: z.number().optional(),
+  lte: z.number().optional(),
+  gt: z.number().optional(),
+  gte: z.number().optional(),
+  not: z.union([z.number(), z.lazy(() => NestedIntFilterSchema)]).optional(),
 }).strict();
 
 export const StringFilterSchema: z.ZodType<PrismaClient.Prisma.StringFilter> = z.object({
@@ -1038,20 +1029,20 @@ export const PostSumOrderByAggregateInputSchema: z.ZodType<PrismaClient.Prisma.P
   authorId: z.lazy(() => SortOrderSchema).optional(),
 }).strict();
 
-export const BigIntWithAggregatesFilterSchema: z.ZodType<PrismaClient.Prisma.BigIntWithAggregatesFilter> = z.object({
-  equals: z.bigint().optional(),
-  in: z.bigint().array().optional(),
-  notIn: z.bigint().array().optional(),
-  lt: z.bigint().optional(),
-  lte: z.bigint().optional(),
-  gt: z.bigint().optional(),
-  gte: z.bigint().optional(),
-  not: z.union([z.bigint(), z.lazy(() => NestedBigIntWithAggregatesFilterSchema)]).optional(),
+export const IntWithAggregatesFilterSchema: z.ZodType<PrismaClient.Prisma.IntWithAggregatesFilter> = z.object({
+  equals: z.number().optional(),
+  in: z.number().array().optional(),
+  notIn: z.number().array().optional(),
+  lt: z.number().optional(),
+  lte: z.number().optional(),
+  gt: z.number().optional(),
+  gte: z.number().optional(),
+  not: z.union([z.number(), z.lazy(() => NestedIntWithAggregatesFilterSchema)]).optional(),
   _count: z.lazy(() => NestedIntFilterSchema).optional(),
   _avg: z.lazy(() => NestedFloatFilterSchema).optional(),
-  _sum: z.lazy(() => NestedBigIntFilterSchema).optional(),
-  _min: z.lazy(() => NestedBigIntFilterSchema).optional(),
-  _max: z.lazy(() => NestedBigIntFilterSchema).optional(),
+  _sum: z.lazy(() => NestedIntFilterSchema).optional(),
+  _min: z.lazy(() => NestedIntFilterSchema).optional(),
+  _max: z.lazy(() => NestedIntFilterSchema).optional(),
 }).strict();
 
 export const StringWithAggregatesFilterSchema: z.ZodType<PrismaClient.Prisma.StringWithAggregatesFilter> = z.object({
@@ -1222,8 +1213,8 @@ export const TagRelationFilterSchema: z.ZodType<PrismaClient.Prisma.TagRelationF
 }).strict();
 
 export const Post_TagPost_idTag_idCompoundUniqueInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagPost_idTag_idCompoundUniqueInput> = z.object({
-  post_id: z.bigint(),
-  tag_id: z.bigint(),
+  post_id: z.number(),
+  tag_id: z.number(),
 }).strict();
 
 export const Post_TagCountOrderByAggregateInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagCountOrderByAggregateInput> = z.object({
@@ -1275,14 +1266,6 @@ export const Post_TagUncheckedCreateNestedManyWithoutPostInputSchema: z.ZodType<
   connect: z.union([z.lazy(() => Post_TagWhereUniqueInputSchema), z.lazy(() => Post_TagWhereUniqueInputSchema).array()]).optional(),
 }).strict();
 
-export const BigIntFieldUpdateOperationsInputSchema: z.ZodType<PrismaClient.Prisma.BigIntFieldUpdateOperationsInput> = z.object({
-  set: z.bigint().optional(),
-  increment: z.bigint().optional(),
-  decrement: z.bigint().optional(),
-  multiply: z.bigint().optional(),
-  divide: z.bigint().optional(),
-}).strict();
-
 export const StringFieldUpdateOperationsInputSchema: z.ZodType<PrismaClient.Prisma.StringFieldUpdateOperationsInput> = z.object({
   set: z.string().optional(),
 }).strict();
@@ -1318,6 +1301,14 @@ export const Post_TagUpdateManyWithoutPostNestedInputSchema: z.ZodType<PrismaCli
   update: z.union([z.lazy(() => Post_TagUpdateWithWhereUniqueWithoutPostInputSchema), z.lazy(() => Post_TagUpdateWithWhereUniqueWithoutPostInputSchema).array()]).optional(),
   updateMany: z.union([z.lazy(() => Post_TagUpdateManyWithWhereWithoutPostInputSchema), z.lazy(() => Post_TagUpdateManyWithWhereWithoutPostInputSchema).array()]).optional(),
   deleteMany: z.union([z.lazy(() => Post_TagScalarWhereInputSchema), z.lazy(() => Post_TagScalarWhereInputSchema).array()]).optional(),
+}).strict();
+
+export const IntFieldUpdateOperationsInputSchema: z.ZodType<PrismaClient.Prisma.IntFieldUpdateOperationsInput> = z.object({
+  set: z.number().optional(),
+  increment: z.number().optional(),
+  decrement: z.number().optional(),
+  multiply: z.number().optional(),
+  divide: z.number().optional(),
 }).strict();
 
 export const Post_TagUncheckedUpdateManyWithoutPostNestedInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagUncheckedUpdateManyWithoutPostNestedInput> = z.object({
@@ -1437,15 +1428,15 @@ export const TagUpdateOneRequiredWithoutPosts_tagsNestedInputSchema: z.ZodType<P
   update: z.union([z.lazy(() => TagUpdateWithoutPosts_tagsInputSchema), z.lazy(() => TagUncheckedUpdateWithoutPosts_tagsInputSchema)]).optional(),
 }).strict();
 
-export const NestedBigIntFilterSchema: z.ZodType<PrismaClient.Prisma.NestedBigIntFilter> = z.object({
-  equals: z.bigint().optional(),
-  in: z.bigint().array().optional(),
-  notIn: z.bigint().array().optional(),
-  lt: z.bigint().optional(),
-  lte: z.bigint().optional(),
-  gt: z.bigint().optional(),
-  gte: z.bigint().optional(),
-  not: z.union([z.bigint(), z.lazy(() => NestedBigIntFilterSchema)]).optional(),
+export const NestedIntFilterSchema: z.ZodType<PrismaClient.Prisma.NestedIntFilter> = z.object({
+  equals: z.number().optional(),
+  in: z.number().array().optional(),
+  notIn: z.number().array().optional(),
+  lt: z.number().optional(),
+  lte: z.number().optional(),
+  gt: z.number().optional(),
+  gte: z.number().optional(),
+  not: z.union([z.number(), z.lazy(() => NestedIntFilterSchema)]).optional(),
 }).strict();
 
 export const NestedStringFilterSchema: z.ZodType<PrismaClient.Prisma.NestedStringFilter> = z.object({
@@ -1492,23 +1483,7 @@ export const NestedDateTimeFilterSchema: z.ZodType<PrismaClient.Prisma.NestedDat
   not: z.union([z.date(), z.lazy(() => NestedDateTimeFilterSchema)]).optional(),
 }).strict();
 
-export const NestedBigIntWithAggregatesFilterSchema: z.ZodType<PrismaClient.Prisma.NestedBigIntWithAggregatesFilter> = z.object({
-  equals: z.bigint().optional(),
-  in: z.bigint().array().optional(),
-  notIn: z.bigint().array().optional(),
-  lt: z.bigint().optional(),
-  lte: z.bigint().optional(),
-  gt: z.bigint().optional(),
-  gte: z.bigint().optional(),
-  not: z.union([z.bigint(), z.lazy(() => NestedBigIntWithAggregatesFilterSchema)]).optional(),
-  _count: z.lazy(() => NestedIntFilterSchema).optional(),
-  _avg: z.lazy(() => NestedFloatFilterSchema).optional(),
-  _sum: z.lazy(() => NestedBigIntFilterSchema).optional(),
-  _min: z.lazy(() => NestedBigIntFilterSchema).optional(),
-  _max: z.lazy(() => NestedBigIntFilterSchema).optional(),
-}).strict();
-
-export const NestedIntFilterSchema: z.ZodType<PrismaClient.Prisma.NestedIntFilter> = z.object({
+export const NestedIntWithAggregatesFilterSchema: z.ZodType<PrismaClient.Prisma.NestedIntWithAggregatesFilter> = z.object({
   equals: z.number().optional(),
   in: z.number().array().optional(),
   notIn: z.number().array().optional(),
@@ -1516,7 +1491,12 @@ export const NestedIntFilterSchema: z.ZodType<PrismaClient.Prisma.NestedIntFilte
   lte: z.number().optional(),
   gt: z.number().optional(),
   gte: z.number().optional(),
-  not: z.union([z.number(), z.lazy(() => NestedIntFilterSchema)]).optional(),
+  not: z.union([z.number(), z.lazy(() => NestedIntWithAggregatesFilterSchema)]).optional(),
+  _count: z.lazy(() => NestedIntFilterSchema).optional(),
+  _avg: z.lazy(() => NestedFloatFilterSchema).optional(),
+  _sum: z.lazy(() => NestedIntFilterSchema).optional(),
+  _min: z.lazy(() => NestedIntFilterSchema).optional(),
+  _max: z.lazy(() => NestedIntFilterSchema).optional(),
 }).strict();
 
 export const NestedFloatFilterSchema: z.ZodType<PrismaClient.Prisma.NestedFloatFilter> = z.object({
@@ -1598,7 +1578,6 @@ export const NestedDateTimeWithAggregatesFilterSchema: z.ZodType<PrismaClient.Pr
 }).strict();
 
 export const UserCreateWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma.UserCreateWithoutPostInput> = z.object({
-  id: z.bigint().optional(),
   name: z.string(),
   email: z.string(),
   password: z.string(),
@@ -1608,7 +1587,7 @@ export const UserCreateWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma.Use
 }).strict();
 
 export const UserUncheckedCreateWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma.UserUncheckedCreateWithoutPostInput> = z.object({
-  id: z.bigint().optional(),
+  id: z.number().optional(),
   name: z.string(),
   email: z.string(),
   password: z.string(),
@@ -1629,7 +1608,7 @@ export const Post_TagCreateWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma
 }).strict();
 
 export const Post_TagUncheckedCreateWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagUncheckedCreateWithoutPostInput> = z.object({
-  tag_id: z.bigint(),
+  tag_id: z.number(),
   created_at: z.date().optional(),
   updated_at: z.date().optional(),
 }).strict();
@@ -1645,7 +1624,6 @@ export const UserUpsertWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma.Use
 }).strict();
 
 export const UserUpdateWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma.UserUpdateWithoutPostInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
   name: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   email: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   password: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -1655,7 +1633,7 @@ export const UserUpdateWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma.Use
 }).strict();
 
 export const UserUncheckedUpdateWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma.UserUncheckedUpdateWithoutPostInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  id: z.union([z.number(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
   name: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   email: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   password: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -1684,8 +1662,8 @@ export const Post_TagScalarWhereInputSchema: z.ZodType<PrismaClient.Prisma.Post_
   AND: z.union([z.lazy(() => Post_TagScalarWhereInputSchema), z.lazy(() => Post_TagScalarWhereInputSchema).array()]).optional(),
   OR: z.lazy(() => Post_TagScalarWhereInputSchema).array().optional(),
   NOT: z.union([z.lazy(() => Post_TagScalarWhereInputSchema), z.lazy(() => Post_TagScalarWhereInputSchema).array()]).optional(),
-  post_id: z.union([z.lazy(() => BigIntFilterSchema), z.bigint()]).optional(),
-  tag_id: z.union([z.lazy(() => BigIntFilterSchema), z.bigint()]).optional(),
+  post_id: z.union([z.lazy(() => IntFilterSchema), z.number()]).optional(),
+  tag_id: z.union([z.lazy(() => IntFilterSchema), z.number()]).optional(),
   created_at: z.union([z.lazy(() => DateTimeFilterSchema), z.date()]).optional(),
   updated_at: z.union([z.lazy(() => DateTimeFilterSchema), z.date()]).optional(),
 }).strict();
@@ -1697,7 +1675,7 @@ export const Post_TagCreateWithoutTagInputSchema: z.ZodType<PrismaClient.Prisma.
 }).strict();
 
 export const Post_TagUncheckedCreateWithoutTagInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagUncheckedCreateWithoutTagInput> = z.object({
-  post_id: z.bigint(),
+  post_id: z.number(),
   created_at: z.date().optional(),
   updated_at: z.date().optional(),
 }).strict();
@@ -1724,7 +1702,6 @@ export const Post_TagUpdateManyWithWhereWithoutTagInputSchema: z.ZodType<PrismaC
 }).strict();
 
 export const PostCreateWithoutAuthorInputSchema: z.ZodType<PrismaClient.Prisma.PostCreateWithoutAuthorInput> = z.object({
-  id: z.bigint().optional(),
   slug: z.string(),
   title: z.string(),
   subtitle: z.string(),
@@ -1748,7 +1725,7 @@ export const PostCreateWithoutAuthorInputSchema: z.ZodType<PrismaClient.Prisma.P
 }).strict();
 
 export const PostUncheckedCreateWithoutAuthorInputSchema: z.ZodType<PrismaClient.Prisma.PostUncheckedCreateWithoutAuthorInput> = z.object({
-  id: z.bigint().optional(),
+  id: z.number().optional(),
   slug: z.string(),
   title: z.string(),
   subtitle: z.string(),
@@ -1796,7 +1773,7 @@ export const PostScalarWhereInputSchema: z.ZodType<PrismaClient.Prisma.PostScala
   AND: z.union([z.lazy(() => PostScalarWhereInputSchema), z.lazy(() => PostScalarWhereInputSchema).array()]).optional(),
   OR: z.lazy(() => PostScalarWhereInputSchema).array().optional(),
   NOT: z.union([z.lazy(() => PostScalarWhereInputSchema), z.lazy(() => PostScalarWhereInputSchema).array()]).optional(),
-  id: z.union([z.lazy(() => BigIntFilterSchema), z.bigint()]).optional(),
+  id: z.union([z.lazy(() => IntFilterSchema), z.number()]).optional(),
   slug: z.union([z.lazy(() => StringFilterSchema), z.string()]).optional(),
   title: z.union([z.lazy(() => StringFilterSchema), z.string()]).optional(),
   subtitle: z.union([z.lazy(() => StringFilterSchema), z.string()]).optional(),
@@ -1816,11 +1793,10 @@ export const PostScalarWhereInputSchema: z.ZodType<PrismaClient.Prisma.PostScala
   latitude: z.union([z.lazy(() => StringFilterSchema), z.string()]).optional(),
   created_at: z.union([z.lazy(() => DateTimeFilterSchema), z.date()]).optional(),
   updated_at: z.union([z.lazy(() => DateTimeFilterSchema), z.date()]).optional(),
-  authorId: z.union([z.lazy(() => BigIntFilterSchema), z.bigint()]).optional(),
+  authorId: z.union([z.lazy(() => IntFilterSchema), z.number()]).optional(),
 }).strict();
 
 export const PostCreateWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prisma.PostCreateWithoutPosts_tagsInput> = z.object({
-  id: z.bigint().optional(),
   slug: z.string(),
   title: z.string(),
   subtitle: z.string(),
@@ -1844,7 +1820,7 @@ export const PostCreateWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Pris
 }).strict();
 
 export const PostUncheckedCreateWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prisma.PostUncheckedCreateWithoutPosts_tagsInput> = z.object({
-  id: z.bigint().optional(),
+  id: z.number().optional(),
   slug: z.string(),
   title: z.string(),
   subtitle: z.string(),
@@ -1864,7 +1840,7 @@ export const PostUncheckedCreateWithoutPosts_tagsInputSchema: z.ZodType<PrismaCl
   latitude: z.string(),
   created_at: z.date().optional(),
   updated_at: z.date().optional(),
-  authorId: z.bigint(),
+  authorId: z.number(),
 }).strict();
 
 export const PostCreateOrConnectWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prisma.PostCreateOrConnectWithoutPosts_tagsInput> = z.object({
@@ -1873,7 +1849,6 @@ export const PostCreateOrConnectWithoutPosts_tagsInputSchema: z.ZodType<PrismaCl
 }).strict();
 
 export const TagCreateWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prisma.TagCreateWithoutPosts_tagsInput> = z.object({
-  id: z.bigint().optional(),
   tag: z.string(),
   title: z.string(),
   title_en: z.string(),
@@ -1888,7 +1863,7 @@ export const TagCreateWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prism
 }).strict();
 
 export const TagUncheckedCreateWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prisma.TagUncheckedCreateWithoutPosts_tagsInput> = z.object({
-  id: z.bigint().optional(),
+  id: z.number().optional(),
   tag: z.string(),
   title: z.string(),
   title_en: z.string(),
@@ -1913,7 +1888,6 @@ export const PostUpsertWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Pris
 }).strict();
 
 export const PostUpdateWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prisma.PostUpdateWithoutPosts_tagsInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
   slug: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   subtitle: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -1937,7 +1911,7 @@ export const PostUpdateWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Pris
 }).strict();
 
 export const PostUncheckedUpdateWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prisma.PostUncheckedUpdateWithoutPosts_tagsInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  id: z.union([z.number(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
   slug: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   subtitle: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -1957,7 +1931,7 @@ export const PostUncheckedUpdateWithoutPosts_tagsInputSchema: z.ZodType<PrismaCl
   latitude: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   created_at: z.union([z.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputSchema)]).optional(),
   updated_at: z.union([z.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputSchema)]).optional(),
-  authorId: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  authorId: z.union([z.number(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
 }).strict();
 
 export const TagUpsertWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prisma.TagUpsertWithoutPosts_tagsInput> = z.object({
@@ -1966,7 +1940,6 @@ export const TagUpsertWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prism
 }).strict();
 
 export const TagUpdateWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prisma.TagUpdateWithoutPosts_tagsInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
   tag: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title_en: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -1981,7 +1954,7 @@ export const TagUpdateWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prism
 }).strict();
 
 export const TagUncheckedUpdateWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prisma.TagUncheckedUpdateWithoutPosts_tagsInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  id: z.union([z.number(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
   tag: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title_en: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -2002,13 +1975,13 @@ export const Post_TagUpdateWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma
 }).strict();
 
 export const Post_TagUncheckedUpdateWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagUncheckedUpdateWithoutPostInput> = z.object({
-  tag_id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  tag_id: z.union([z.number(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
   created_at: z.union([z.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputSchema)]).optional(),
   updated_at: z.union([z.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputSchema)]).optional(),
 }).strict();
 
 export const Post_TagUncheckedUpdateManyWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagUncheckedUpdateManyWithoutPosts_tagsInput> = z.object({
-  tag_id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  tag_id: z.union([z.number(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
   created_at: z.union([z.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputSchema)]).optional(),
   updated_at: z.union([z.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputSchema)]).optional(),
 }).strict();
@@ -2020,13 +1993,12 @@ export const Post_TagUpdateWithoutTagInputSchema: z.ZodType<PrismaClient.Prisma.
 }).strict();
 
 export const Post_TagUncheckedUpdateWithoutTagInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagUncheckedUpdateWithoutTagInput> = z.object({
-  post_id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  post_id: z.union([z.number(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
   created_at: z.union([z.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputSchema)]).optional(),
   updated_at: z.union([z.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputSchema)]).optional(),
 }).strict();
 
 export const PostUpdateWithoutAuthorInputSchema: z.ZodType<PrismaClient.Prisma.PostUpdateWithoutAuthorInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
   slug: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   subtitle: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -2050,7 +2022,7 @@ export const PostUpdateWithoutAuthorInputSchema: z.ZodType<PrismaClient.Prisma.P
 }).strict();
 
 export const PostUncheckedUpdateWithoutAuthorInputSchema: z.ZodType<PrismaClient.Prisma.PostUncheckedUpdateWithoutAuthorInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  id: z.union([z.number(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
   slug: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   subtitle: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
@@ -2074,7 +2046,7 @@ export const PostUncheckedUpdateWithoutAuthorInputSchema: z.ZodType<PrismaClient
 }).strict();
 
 export const PostUncheckedUpdateManyWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma.PostUncheckedUpdateManyWithoutPostInput> = z.object({
-  id: z.union([z.bigint(), z.lazy(() => BigIntFieldUpdateOperationsInputSchema)]).optional(),
+  id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputSchema)]).optional(),
   slug: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   title: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),
   subtitle: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)]).optional(),

@@ -12,7 +12,7 @@ datasource db {
 }
 
 model Post {
-  id               BigInt     @id @default(autoincrement())
+  id               Int        @id @default(autoincrement())
   slug             String
   title            String
   subtitle         String
@@ -34,11 +34,11 @@ model Post {
   created_at       DateTime   @default(now())
   updated_at       DateTime   @default(now()) @updatedAt
   posts_tags       Post_Tag[]
-  authorId         BigInt
+  authorId         Int
 }
 
 model Tag {
-  id                BigInt     @id @default(autoincrement())
+  id                Int        @id @default(autoincrement())
   tag               String
   title             String
   title_en          String
@@ -54,7 +54,7 @@ model Tag {
 }
 
 model User {
-  id             BigInt   @id @default(autoincrement())
+  id             Int      @id @default(autoincrement())
   name           String
   email          String
   password       String
@@ -67,8 +67,8 @@ model User {
 model Post_Tag {
   post       Post     @relation(fields: [post_id], references: [id])
   tag        Tag      @relation(fields: [tag_id], references: [id])
-  post_id    BigInt
-  tag_id     BigInt
+  post_id    Int
+  tag_id     Int
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
