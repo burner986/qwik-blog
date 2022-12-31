@@ -1,9 +1,8 @@
 import { component$, Resource } from "@builder.io/qwik";
 import { DocumentHead, useEndpoint } from "@builder.io/qwik-city";
 import {
-  BlogListItem,
-  EntryListItem,
-} from "~/components/bloglistitem/BlogListItem";
+  EntriesListItem,
+} from "~/components/entrieslistitem/EntriesListItem";
 import { HeroTitle } from "~/components/title/HeroTitle";
 import { $translate as t, Speak } from "qwik-speak";
 import { prisma } from "~/prisma";
@@ -30,7 +29,7 @@ export const onGet: RequestHandler<Post[]> = async () => {
 };
 
 export default component$(() => {
-  const listItems = useEndpoint<EntryListItem[]>();
+  const listItems = useEndpoint<Post[]>();
 
   return (
     <Speak assets={["home"]}>
@@ -48,7 +47,7 @@ export default component$(() => {
               <>
                 {listItems?.map((item, index) => (
                   <>
-                    <BlogListItem {...item} />
+                    <EntriesListItem post={item} />
                     {index < listItems.length - 1 && (
                       <div class="divider"></div>
                     )}
