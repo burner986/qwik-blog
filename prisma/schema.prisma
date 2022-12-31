@@ -3,7 +3,7 @@ generator client {
 }
 
 generator zod {
-  provider = "prisma-zod-generator"
+  provider = "zod-prisma-types"
 }
 
 datasource db {
@@ -33,7 +33,7 @@ model Post {
   author           User       @relation(fields: [authorId], references: [id])
   created_at       DateTime   @default(now())
   updated_at       DateTime
-  posts_tags       post_tag[]
+  posts_tags       Post_Tag[]
   authorId         BigInt
 }
 
@@ -50,20 +50,7 @@ model Tag {
   reverse_direction Boolean
   created_at        DateTime   @default(now())
   updated_at        DateTime
-  posts_tags        post_tag[]
-}
-
-model post_tag {
-  post       Post     @relation(fields: [post_id], references: [id])
-  tag        Tag      @relation(fields: [tag_id], references: [id])
-  post_id    BigInt
-  tag_id     BigInt
-  created_at DateTime @default(now())
-  updated_at DateTime
-
-  @@id([post_id, tag_id])
-  @@index([post_id], name: "posts_tags_post_id_index")
-  @@index([tag_id], name: "posts_tags_tag_id_index")
+  posts_tags        Post_Tag[]
 }
 
 model User {
@@ -75,4 +62,17 @@ model User {
   created_at     DateTime @default(now())
   updated_at     DateTime
   Post           Post[]
+}
+
+model Post_Tag {
+  post       Post     @relation(fields: [post_id], references: [id])
+  tag        Tag      @relation(fields: [tag_id], references: [id])
+  post_id    BigInt
+  tag_id     BigInt
+  created_at DateTime @default(now())
+  updated_at DateTime
+
+  @@id([post_id, tag_id])
+  @@index([post_id], name: "posts_tags_post_id_index")
+  @@index([tag_id], name: "posts_tags_tag_id_index")
 }
