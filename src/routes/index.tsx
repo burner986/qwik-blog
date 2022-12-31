@@ -10,7 +10,7 @@ import { prisma } from "~/prisma";
 import type { RequestHandler } from "@builder.io/qwik-city";
 
 export const onGet: RequestHandler<EntryListItem[]> = async () => {
-  const entries = await prisma.posts.findMany({
+  const entries = await prisma.post.findMany({
     select: {
       id: true,
       title: true,
@@ -27,26 +27,6 @@ export const onGet: RequestHandler<EntryListItem[]> = async () => {
     tags: ["hi", "hello"],
     date: entry.created_at!.toString(),
   }));
-
-  // put your DB access here, we are hard coding a response for simplicity.
-  // return [
-  //   {
-  //     slug: "hello-world",
-  //     title: "Man must explore, and this is exploration at its greatest",
-  //     subtitle: "Problems look mighty small from 150 miles up",
-  //     username: "burner",
-  //     tags: ["hi", "hello"],
-  //     date: new Date().toString(),
-  //   },
-  //   {
-  //     slug: "hello-world",
-  //     title: "Man must explore, and this is exploration at its greatest",
-  //     subtitle: "Problems look mighty small from 150 miles up",
-  //     username: "burner",
-  //     tags: ["hi", "hello"],
-  //     date: new Date().toString(),
-  //   },
-  // ];
 };
 
 export default component$(() => {
