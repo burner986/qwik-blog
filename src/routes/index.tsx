@@ -8,25 +8,25 @@ import { HeroTitle } from "~/components/title/HeroTitle";
 import { $translate as t, Speak } from "qwik-speak";
 import { prisma } from "~/prisma";
 import type { RequestHandler } from "@builder.io/qwik-city";
+import { Post } from "~/entities/post";
 
-export const onGet: RequestHandler<EntryListItem[]> = async () => {
+export const onGet: RequestHandler<Post[]> = async () => {
   const entries = await prisma.post.findMany({
-    select: {
-      id: true,
-      title: true,
-      subtitle: true,
-      slug: true,
-      created_at: true,
+    include: {
+      author: true,
+      posts_tags: {
+        include: {
+          tag: {
+            select: {
+              title: true,
+              title_en: true,
+            },
+          },
+        },
+      },
     },
   });
-  return entries.map((entry) => ({
-    slug: entry.slug!,
-    title: entry.title!,
-    subtitle: entry.subtitle!,
-    username: "burner",
-    tags: ["hi", "hello"],
-    date: entry.created_at!.toString(),
-  }));
+  return entries;
 };
 
 export default component$(() => {
