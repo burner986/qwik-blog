@@ -45,6 +45,8 @@
   },
   "dependencies": {
     "@prisma/client": "^4.8.0",
-    "daisyui": "^2.45.0"
+    "daisyui": "^2.45.0",
+    "prisma-zod-generator": "^0.8.8",
+    "zod": "^3.20.2"
   }
 }
