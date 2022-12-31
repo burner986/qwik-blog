@@ -562,7 +562,7 @@ export const PostCreateInputSchema: z.ZodType<PrismaClient.Prisma.PostCreateInpu
   latitude: z.string(),
   author: z.lazy(() => UserCreateNestedOneWithoutPostInputSchema),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
   posts_tags: z.lazy(() => Post_TagCreateNestedManyWithoutPostInputSchema).optional(),
 }).strict();
 
@@ -586,7 +586,7 @@ export const PostUncheckedCreateInputSchema: z.ZodType<PrismaClient.Prisma.PostU
   longitude: z.string(),
   latitude: z.string(),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
   posts_tags: z.lazy(() => Post_TagUncheckedCreateNestedManyWithoutPostInputSchema).optional(),
   authorId: z.bigint(),
 }).strict();
@@ -700,7 +700,7 @@ export const TagCreateInputSchema: z.ZodType<PrismaClient.Prisma.TagCreateInput>
   layout: z.string().optional().nullable(),
   reverse_direction: z.boolean(),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
   posts_tags: z.lazy(() => Post_TagCreateNestedManyWithoutTagInputSchema).optional(),
 }).strict();
 
@@ -716,7 +716,7 @@ export const TagUncheckedCreateInputSchema: z.ZodType<PrismaClient.Prisma.TagUnc
   layout: z.string().optional().nullable(),
   reverse_direction: z.boolean(),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
   posts_tags: z.lazy(() => Post_TagUncheckedCreateNestedManyWithoutTagInputSchema).optional(),
 }).strict();
 
@@ -789,7 +789,7 @@ export const UserCreateInputSchema: z.ZodType<PrismaClient.Prisma.UserCreateInpu
   password: z.string(),
   remember_token: z.string(),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
   Post: z.lazy(() => PostCreateNestedManyWithoutAuthorInputSchema).optional(),
 }).strict();
 
@@ -800,7 +800,7 @@ export const UserUncheckedCreateInputSchema: z.ZodType<PrismaClient.Prisma.UserU
   password: z.string(),
   remember_token: z.string(),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
   Post: z.lazy(() => PostUncheckedCreateNestedManyWithoutAuthorInputSchema).optional(),
 }).strict();
 
@@ -850,14 +850,14 @@ export const Post_TagCreateInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagCr
   post: z.lazy(() => PostCreateNestedOneWithoutPosts_tagsInputSchema),
   tag: z.lazy(() => TagCreateNestedOneWithoutPosts_tagsInputSchema),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
 }).strict();
 
 export const Post_TagUncheckedCreateInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagUncheckedCreateInput> = z.object({
   post_id: z.bigint(),
   tag_id: z.bigint(),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
 }).strict();
 
 export const Post_TagUpdateInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagUpdateInput> = z.object({
@@ -1604,7 +1604,7 @@ export const UserCreateWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma.Use
   password: z.string(),
   remember_token: z.string(),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
 }).strict();
 
 export const UserUncheckedCreateWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma.UserUncheckedCreateWithoutPostInput> = z.object({
@@ -1614,7 +1614,7 @@ export const UserUncheckedCreateWithoutPostInputSchema: z.ZodType<PrismaClient.P
   password: z.string(),
   remember_token: z.string(),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
 }).strict();
 
 export const UserCreateOrConnectWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma.UserCreateOrConnectWithoutPostInput> = z.object({
@@ -1625,13 +1625,13 @@ export const UserCreateOrConnectWithoutPostInputSchema: z.ZodType<PrismaClient.P
 export const Post_TagCreateWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagCreateWithoutPostInput> = z.object({
   tag: z.lazy(() => TagCreateNestedOneWithoutPosts_tagsInputSchema),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
 }).strict();
 
 export const Post_TagUncheckedCreateWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagUncheckedCreateWithoutPostInput> = z.object({
   tag_id: z.bigint(),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
 }).strict();
 
 export const Post_TagCreateOrConnectWithoutPostInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagCreateOrConnectWithoutPostInput> = z.object({
@@ -1693,13 +1693,13 @@ export const Post_TagScalarWhereInputSchema: z.ZodType<PrismaClient.Prisma.Post_
 export const Post_TagCreateWithoutTagInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagCreateWithoutTagInput> = z.object({
   post: z.lazy(() => PostCreateNestedOneWithoutPosts_tagsInputSchema),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
 }).strict();
 
 export const Post_TagUncheckedCreateWithoutTagInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagUncheckedCreateWithoutTagInput> = z.object({
   post_id: z.bigint(),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
 }).strict();
 
 export const Post_TagCreateOrConnectWithoutTagInputSchema: z.ZodType<PrismaClient.Prisma.Post_TagCreateOrConnectWithoutTagInput> = z.object({
@@ -1743,7 +1743,7 @@ export const PostCreateWithoutAuthorInputSchema: z.ZodType<PrismaClient.Prisma.P
   longitude: z.string(),
   latitude: z.string(),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
   posts_tags: z.lazy(() => Post_TagCreateNestedManyWithoutPostInputSchema).optional(),
 }).strict();
 
@@ -1767,7 +1767,7 @@ export const PostUncheckedCreateWithoutAuthorInputSchema: z.ZodType<PrismaClient
   longitude: z.string(),
   latitude: z.string(),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
   posts_tags: z.lazy(() => Post_TagUncheckedCreateNestedManyWithoutPostInputSchema).optional(),
 }).strict();
 
@@ -1840,7 +1840,7 @@ export const PostCreateWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Pris
   latitude: z.string(),
   author: z.lazy(() => UserCreateNestedOneWithoutPostInputSchema),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
 }).strict();
 
 export const PostUncheckedCreateWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prisma.PostUncheckedCreateWithoutPosts_tagsInput> = z.object({
@@ -1863,7 +1863,7 @@ export const PostUncheckedCreateWithoutPosts_tagsInputSchema: z.ZodType<PrismaCl
   longitude: z.string(),
   latitude: z.string(),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
   authorId: z.bigint(),
 }).strict();
 
@@ -1884,7 +1884,7 @@ export const TagCreateWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prism
   layout: z.string().optional().nullable(),
   reverse_direction: z.boolean(),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
 }).strict();
 
 export const TagUncheckedCreateWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prisma.TagUncheckedCreateWithoutPosts_tagsInput> = z.object({
@@ -1899,7 +1899,7 @@ export const TagUncheckedCreateWithoutPosts_tagsInputSchema: z.ZodType<PrismaCli
   layout: z.string().optional().nullable(),
   reverse_direction: z.boolean(),
   created_at: z.date().optional(),
-  updated_at: z.date(),
+  updated_at: z.date().optional(),
 }).strict();
 
 export const TagCreateOrConnectWithoutPosts_tagsInputSchema: z.ZodType<PrismaClient.Prisma.TagCreateOrConnectWithoutPosts_tagsInput> = z.object({

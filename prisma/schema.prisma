@@ -32,7 +32,7 @@ model Post {
   latitude         String
   author           User       @relation(fields: [authorId], references: [id])
   created_at       DateTime   @default(now())
-  updated_at       DateTime
+  updated_at       DateTime   @default(now()) @updatedAt
   posts_tags       Post_Tag[]
   authorId         BigInt
 }
@@ -49,7 +49,7 @@ model Tag {
   layout            String?
   reverse_direction Boolean
   created_at        DateTime   @default(now())
-  updated_at        DateTime
+  updated_at        DateTime   @default(now()) @updatedAt
   posts_tags        Post_Tag[]
 }
 
@@ -60,7 +60,7 @@ model User {
   password       String
   remember_token String
   created_at     DateTime @default(now())
-  updated_at     DateTime
+  updated_at     DateTime @default(now()) @updatedAt
   Post           Post[]
 }
 
@@ -70,7 +70,7 @@ model Post_Tag {
   post_id    BigInt
   tag_id     BigInt
   created_at DateTime @default(now())
-  updated_at DateTime
+  updated_at DateTime @updatedAt
 
   @@id([post_id, tag_id])
   @@index([post_id], name: "posts_tags_post_id_index")
