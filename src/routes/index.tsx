@@ -5,7 +5,7 @@ import {
 } from "~/components/entrieslistitem/EntriesListItem";
 import { HeroTitle } from "~/components/title/HeroTitle";
 import { $translate as t, Speak } from "qwik-speak";
-import { prisma } from "~/prisma";
+import prisma from "~/prisma";
 import type { RequestHandler } from "@builder.io/qwik-city";
 import { Post } from "~/entities/post";
 

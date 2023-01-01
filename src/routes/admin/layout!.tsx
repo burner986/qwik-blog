@@ -4,14 +4,18 @@ import { AdminHeader } from "~/components/header/adminheader";
 
 export default component$(() => {
   return (
-    <>
-      <main>
-        <AdminHeader />
-        <section>
-          <Slot />
-        </section>
-      </main>
-      <Footer />
-    </>
+    <div class="h-screen">
+      <div class="flex flex-col h-full">
+        <main>
+          <AdminHeader />
+          <section>
+            <Slot />
+          </section>
+        </main>
+        <div class="mt-auto">
+          <Footer />
+        </div>
+      </div>
+    </div>
   );
 });

@@ -5,12 +5,18 @@ declare global {
   var prisma: PrismaClient | undefined;
 }
 
-export const prisma =
-  global.prisma ||
-  new PrismaClient({
-    log: import.meta.env.DEV ? ["query", "error", "warn"] : ["error"],
-  });
+let prisma: PrismaClient;
 
-if (import.meta.env.PROD) {
-  global.prisma = prisma;
+if (typeof window === "undefined") {
+  prisma =
+    global.prisma ||
+    new PrismaClient({
+      log: import.meta.env.DEV ? ["query", "error", "warn"] : ["error"],
+    });
+  if (import.meta.env.PROD) {
+    global.prisma = prisma;
+  }
 }
+
+// @ts-ignore
+export default prisma;
