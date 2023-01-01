@@ -1,8 +1,11 @@
-import { component$, useClientEffect$ } from "@builder.io/qwik";
+import { component$, useClientEffect$, useContext } from "@builder.io/qwik";
 import { useNavigate } from "@builder.io/qwik-city";
+import { AuthContext } from "~/components/context/auth/AuthProvider";
 
 export default component$(() => {
   const nav = useNavigate();
+  const auth = useContext(AuthContext);
+
   useClientEffect$(() => {
     const getCookie = (name: string) => {
       return document.cookie.split(";").some((c) => {
@@ -24,6 +27,7 @@ export default component$(() => {
       }
     };
     deleteCookie("blog-auth", "/", window.location.hostname);
+    auth.loggedIn = false;
     nav.path = "/admin/login/";
   });
   return <div></div>;

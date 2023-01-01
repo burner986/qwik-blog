@@ -1,4 +1,4 @@
-import { component$, Resource } from "@builder.io/qwik";
+import { component$, Resource, useContext } from "@builder.io/qwik";
 import {
   DocumentHead,
   RequestHandler,
@@ -8,6 +8,7 @@ import {
 import { Speak } from "qwik-speak";
 import prisma from "~/prisma";
 import { UserLogin } from "~/entities/user";
+import { AuthContext } from "~/components/context/auth/AuthProvider";
 
 export const onGet: RequestHandler<UserLogin> = async ({
   response,
@@ -16,10 +17,9 @@ export const onGet: RequestHandler<UserLogin> = async ({
   const userCookie = cookie.get("blog-auth");
 
   const { email, password } = (userCookie?.json() as UserLogin) || {};
-  console.log(email, password);
 
   if (!email || !password) {
-    throw response.error(401);
+    throw response.redirect("/admin/login");
   }
 
   const user = await prisma.user.findFirstOrThrow({
@@ -29,7 +29,10 @@ export const onGet: RequestHandler<UserLogin> = async ({
     },
   });
 
-  console.log(user);
+  if (!user) {
+    throw response.redirect("/admin/login");
+  }
+
   return {
     email: user.email,
     password: user.password,
@@ -39,6 +42,7 @@ export const onGet: RequestHandler<UserLogin> = async ({
 export default component$(() => {
   const userData = useEndpoint<UserLogin>();
   const nav = useNavigate();
+  const auth = useContext(AuthContext);
 
   return (
     <Resource
@@ -50,11 +54,14 @@ export default component$(() => {
       }}
       onResolved={(user) => {
         if (!user) {
+          auth.loggedIn = false;
           nav.path = "/admin/login";
+        } else {
+          auth.loggedIn = true;
         }
-        console.log(user);
+
         return (
-          <>{user ? <Speak assets={["admin"]}>WTF</Speak> : <div></div>}</>
+          <>{auth.loggedIn ? <Speak assets={["admin"]}>WTF</Speak> : <div></div>}</>
         );
       }}
     />
