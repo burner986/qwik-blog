@@ -1,3 +1,6 @@
+Building a Blog with Qwik ... work in progress
+
+
 # Qwik City App ⚡️
 
 - [Qwik Docs](https://qwik.builder.io/)
