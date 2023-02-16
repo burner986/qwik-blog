@@ -1,8 +1,6 @@
 import { component$, Resource } from "@builder.io/qwik";
 import { DocumentHead, useEndpoint } from "@builder.io/qwik-city";
-import {
-  EntriesListItem,
-} from "~/components/entrieslistitem/EntriesListItem";
+import { EntriesListItem } from "~/components/entrieslistitem/EntriesListItem";
 import { HeroTitle } from "~/components/title/HeroTitle";
 import { $translate as t, Speak } from "qwik-speak";
 import prisma from "~/prisma";
@@ -35,7 +33,7 @@ export default component$(() => {
     <Speak assets={["home"]}>
       <HeroTitle
         title={t("app.title@@{{name}}", { name: "BurnersBlog." })}
-        imgUrl="https://placeimg.com/1000/800/arch"
+        imgUrl="https://picsum.photos/1000/800"
       />
       <div class="flex justify-center">
         <div class="flex flex-col w-full max-w-3xl p-5 border-opacity-50 pt-16 pb-16">

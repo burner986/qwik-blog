@@ -9,7 +9,7 @@ export default component$(() => {
       <HeroTitle
         title="Logbuch Eintrag Nummer XXX."
         subtitle="Sieht aus als wäre hier noch nichts passiert."
-        imgUrl="https://placeimg.com/1000/800/arch"
+        imgUrl="https://picsum.photos/1000/800"
       />
       <div class="flex justify-center">
         <div class="flex flex-col w-full max-w-3xl p-5 border-opacity-50 pt-16 pb-16 text-xl">
